@@ -1,0 +1,41 @@
+{
+  "name": "figarts/bookslot",
+  "description": "Bookslot",
+  "type": "wordpress-plugins",
+  "license": "GPL-2.0-or-later",
+  "autoload": {
+		"psr-4": {
+			"Bookslots\\": "app/"
+		}
+	},
+  "require": {
+    "php": ">=7.4",
+    "composer/installers": "~1.2",
+    "rakit/validation": "^1.4",
+    "nesbot/carbon": "^2.58"
+  },
+  "require-dev": {
+    "pheromone/phpcs-security-audit": "^2.0",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+    "roave/security-advisories": "dev-master",
+    "phpcompatibility/php-compatibility": "^9.2",
+    "wp-coding-standards/wpcs": "^2.1"
+  },
+  "scripts": {
+    "audit": "vendor/squizlabs/php_codesniffer/bin/phpcs . --report=code --standard='phpcss.xml' -n -s > ./phpcs-report.log || exit 0",
+    "check-cs": "@php vendor/bin/phpcs --parallel=8 --extensions=php,inc,lib,module,info -s",
+    "lint": "vendor/bin/phpcs --extensions=php --standard='phpcs.xml'",
+    "audit-lint": "vendor/bin/phpcs --extensions=php --standard='phpcss.xml' .",
+    "audit-fix": "vendor/bin/phpcbf --extensions=php --standard='phpcss.xml' .",
+    "lint-all": "vendor/bin/phpcs --extensions=php --standard='phpcs.xml' .  --ignore=*/bin/*,*/tests/*,*/vendor/*",
+    "fix": "vendor/bin/phpcbf --extensions=php --standard='phpcs.xml'",
+    "fix-all": "vendor/bin/phpcbf --extensions=php --standard='phpcs.xml' . --ignore=*/bin/*,*/tests/*,*/vendor/*",
+    "tests": "vendor/bin/phpunit"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "composer/installers": true
+    }
+  }
+}
